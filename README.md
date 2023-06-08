@@ -1,7 +1,9 @@
 # Pulsed Laser Intensity Stabilization
 
 ## Table of Contents
+- [Motivation](#Motivation)
 
+- [List of Components](#List of Components)
 
 # Motivation
 
