@@ -20,6 +20,9 @@
 ## Acousto-Optics Modulator (AOM)
 ## Voltage Variable Attenuator (VVA)
 ### 
+
+<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/AOM_first_order_power_versus_VVA_tune.png" width="300">
+
 ## Arduino DUE
 
 
