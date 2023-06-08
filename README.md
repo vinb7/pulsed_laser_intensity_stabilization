@@ -11,6 +11,7 @@
 ## Acousto-Optics Modulator (AOM)
 ## Arduino DUE
 ## Voltage Variable Attenuator (VVA)
+[click here](https://www.minicircuits.com/pdfs/ZX73-2500+.pdf)
 
 # Feedback Loop
 ## PID Controller
