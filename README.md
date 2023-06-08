@@ -1,5 +1,5 @@
 # Laser Intensity Stabilization
-# jjjjjj
+
 <div align="center">
 <img src="https://github.com/Jayich-Lab/laser_intensity_stabilization/blob/a74a1729dd4d4fad07957e3e5872ce33a577457c/real%20setup.jpg" width="1000">
 </div>
