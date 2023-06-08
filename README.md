@@ -2,8 +2,9 @@
 
 ## Table of Contents
 - [Motivation](#Motivation)
-
-- [List of Components](#List of Components)
+- [List of Components](#List-of-Components)
+- [Schematics](#Schematics)
+  - [Experiment Setup Schematics[#Experiment
 
 # Motivation
 
