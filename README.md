@@ -8,6 +8,8 @@
   - [Acousto-Optics Modulator (AOM)](#Acousto-Optics-Modulator-(AOM))
   - [Arduino DUE](#Arduino-DUE)
   - [Voltage Variable Attenuator](#Voltage-Variable-Attenuator)
+- [Feedback Loop](#Feedback-Loop)
+- [Future Plans](#Future-Plan)
 
 # Motivation
 
@@ -22,4 +24,4 @@
 # Feedback Loop
 ## PID Controller
 
-# Future Plans
+# Future Plan
