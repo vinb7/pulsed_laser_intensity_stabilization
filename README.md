@@ -49,9 +49,9 @@ The first order diffraction efficiency of AOM is crucial in determining our dyna
 ## Arduino DUE
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/branch_tommy/Arduino_DUE.png" width="1000">
 Arduino DUE is a common, accessible microcontroller that allows us to read input voltage, output voltage, and calculate corrections using a PID algorithm. Voltage generated from the photodiode taking the stabilized signal is fed into one of its Analog-to-Digital Converter pin, and after calculating the PID error signal, a correction voltage is outputted from one of its Digital-to-Analog Converter pin to vary the power received by the AOM. <br />
-
+<br />
 Arduino DUE is the fastest among the Arduino family, in terms of sampling rate and processing speed. However, it turned out that for our purpose of stabilzing a 5us pulse, the speed of the Arduino DUE is still insufficient. Below is a summary of the time taken by different Arduino commands: <br />
-
+<br />
 digitalRead(): 1.2us <br />
 read_adc(): 1.8us <br />
 micros(): 1.3us <br />
