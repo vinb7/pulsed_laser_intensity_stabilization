@@ -36,7 +36,13 @@ We have a 635nm laser first shining into a sequence of optics, where the light i
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/Experimental_Setup.png" width="1000">
 
 ## Circuit
+<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/PLIS_Circuit.png" width="500">
+The circuit consists of two non-inverting amplifiers. The DAC output pin of the Arduino can only output 0.5-2.7V, and often we want higher control voltage to the VVA to decrease its attenuation, thereby getting more optical power at the output. Therefore, we constructed a non-inverting op-amp with gain 5x. The signal from the photodiode is also amplified, by 7x, because our device should ideally only take away a small portion of the output power, hence, we want to amplify this weak signal. 
+
+An old circuit design uses differential op-amp to interface between the DAC and the VVA.
+
 ## Acousto-Optics Modulator (AOM)
+
 ## Voltage Variable Attenuator (VVA)
 
 
