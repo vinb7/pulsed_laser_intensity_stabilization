@@ -17,6 +17,9 @@ electrogmagnetic field, which in many cases corresponds to the intensity of a la
 
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/branch_Tommy/Rabi Freq.png" width="600">
 
+# Setup
+<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/branch_Tommy/Experimental_Setup.png" width="1000">
+We have a 635nm laser first shining into a sequence of optics, where the light is split into two portions. A portion goes directly into a photodiode and becomes our raw signal - we monitor the change of laser intensity using this signal. The other portion of the laser goes through an acousto-optic modulator, or AOM, which acts as a diffraction grating and can diffract incident light into different angles. For our setup, we take the first order light. This first order light will be the output, and be fed back to the Arduino. This is the signal we want to stabilize. The Arduino then calculates a correction signal, feeding it into a Voltage Variable Attenuator, VVA, to control how much power the AOM gets. The more power the AOM gets, the more optical power is distributed into the first order light.
 
 # List of Components
 ## [PL202 Thorlab Compact Laser](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=12994) 
