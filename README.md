@@ -14,7 +14,7 @@
 # Motivation
 
 # List of Components
-
+## [PL202 Thorlab Compact Laser](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=12994) 
 # Schematics
 ## Experiment Setup Schematics
 ## Acousto-Optics Modulator (AOM)
