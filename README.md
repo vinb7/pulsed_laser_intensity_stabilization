@@ -93,7 +93,12 @@ The derivative (D) correction is used as a damping term to suppress overshoots a
 # Results
 ## Peak Fluctuation
 <img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/peak fluctuation.png" width="1000">
-When we test high frequency pulses, we lose the ability to stabilize each peak. Due to the runtime of the arduino functions and the relatively short pulse widths we are testing, we can grab 0-2 data points per peak. 
+When conducting tests on high frequency pulses, we encounter a challenge in stabilizing each peak adequately. This difficulty arises due to the runtime of the Arduino functions and the relatively short pulse widths being tested. 
+As a result, we are only able to capture 0 to 2 data points per peak. The plot provided above showcases the fluctuation in laser intensity observed at a few peaks. Notably, we discovered that the peak value itself exhibited a significant fluctuation of approximately 12%. 
+This inconsistency highlights the limitations imposed by the testing conditions and emphasizes the need for improved methods to stabilize the peaks in such high frequency pulse experiments.
+## One Sampling Window for Arduino
+<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/peak fluctuation.png" width="1000">
+This plot shows our stabilization results for one sampling window for the arduino. We see two peaks, one at 0 V and one centered around 0.53 V seperated by a few intermediatary values that are so sparse, they are hardly visible in the plot. Considering the distribution corresponding to the laser being on (the distribution around 0.53 V), we obtain a relative error of 4.3% of our laser's stability. We calculate this relative error by finding the standard deviation of all the measurements in our trial, then dividing the standard deviation by the mean. Since this is one sampling window, we've run virtually no stabilization so far and this 4.3% relative error is rather a characterization of our system's limitations (including noise from our electronic components and limitations from the oscilliscope for data collection.
 ## Simulating Practical Fluctuations
 Our testing laser does not drift significantly over long time, therefore, to show the effect of our stabilization, we placed a variable filter in front of the laser which blocked a portion of light depending on how much it is rotated. Below are two situations which could happen in practice. <br />
 ### Adiabatic Fluctuation
