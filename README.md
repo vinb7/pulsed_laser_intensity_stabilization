@@ -149,6 +149,13 @@ At the right end, the stabilized signal is brought up by a larger fluctuation an
 This is simulating when people stop running experiments and only come back sometimes later. When no experiment is running, the laser is blocked but is still on and drifting, yet the Arduino receives no information regarding how the laser intensity is changing Then, when people restart the experiment, we expect our device to bring back the free-running laser despite this lack of information. As we see here, the stabilization is able to function even after a period of long deadtime. How long it takes to bring back the optical power depends on the settings of PID coefficients. With our default setting, we typically saw stabilization within 10ms.<br />
 <br />
 
+### Overall Statement on Performance
+During the arduino sampling window of 100 pulses, we observed a relative error of 4.3%. Interestingly, this relative error remained constant over longer durations, effectively mitigating the impact of long-term laser drifting. However, due to the limited window size of 100 pulses, we were unable to achieve further stabilization within the 300μs regime.
+
+To address this limitation, we are currently engaged in brainstorming sessions to develop strategies for better stabilization on an extremely short-term scale. Our objective is to find approaches that can effectively reduce the inherent error in our system and bring us closer to achieving a laser intensity fluctuation of less than 1% for a 5μs pulse width.
+
+By focusing on improving stabilization mechanisms at shorter timescales, we anticipate making significant progress in reducing the overall error and enhancing the precision of our pulsed laser system. This effort reflects our commitment to continuously refine and optimize our setup, ultimately enabling more accurate and reliable measurements in the future.
+
 # Future Plan
 The top priority is to find a microcontroller with faster sampling rate and shorter processing time. We made the Arduino DUE to work by designing sophisticated algorithm, which sacrifices short-term stability for long-term reliability. Currently, the Arduino is ignorant of fluctuations faster than 100ms, which makes our goal of suppressing the flunctuation down to 1% unreachable. However, if a new microcontroller can keep up with the short pulse length, a more straightforward algorithm can be employed which should make this blind time much shorter and therefore we can address those fast fluctuations. <br />
 <br />
