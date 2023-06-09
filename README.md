@@ -15,6 +15,10 @@
 
 # List of Components
 ## [PL202 Thorlab Compact Laser](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=12994) 
+## [AOM](https://www.lambdaphoto.co.uk/intraaction-atm-series-acousto-optic-modulator.html)
+## [ZX73-2500+ Voltage Variable Attenuator(VVA)](https://www.minicircuits.com/pdfs/ZX73-2500+.pdf)
+
+
 # Schematics
 ## Experiment Setup Schematics
 ## Acousto-Optics Modulator (AOM)
