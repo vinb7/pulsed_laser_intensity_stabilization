@@ -19,6 +19,7 @@
 - Voltage Variable Attenuator: [ZX73-2500+](https://www.minicircuits.com/pdfs/ZX73-2500+.pdf)
 - RF Amplifier: [ZHL-1-2W+](https://www.minicircuits.com/WebStore/dashboard.html?model=ZHL-1-2W%2B)
 - Photodiode: [PDA10A2](https://www.thorlabs.com/thorproduct.cfm?partnumber=PDA10A2)
+- Function Generator, DC Power Supply, Oscilloscope, Op Amp, Optics(mirrors, converging lens, rotating filter, polarizer, beam splitter, aperture etc.) 
 
 
 # Schematics
