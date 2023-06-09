@@ -108,11 +108,18 @@ It is important to note that this sampling window represents a scenario where we
 However, despite the challenges encountered, this characterization provides valuable insights into the long-term performance of our feedback loop. It highlights the areas where improvements are needed to enhance the stability and precision of our laser system..
 
 <img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/raw one sampling window.png" width="1000">
-We see that just the raw signal from the laser itself, without passing through the AOM or any of our electronic components had a relative error of 1.2% over this short 100 pulse window. This means being more careful with our optical allignment and circuit design could help us decrease the proclaimed "inherent" error in our pulsed laser setup of 4.3%. Since this raw signal has no stabilization feedback loop working on it, and for one sampling window, our pulsed laser has virtually no stabilization feedback loop working on it, we can compare their values at this very short time scale to their values at a very long time scale to characterize how well our stabilization actually works.
+The analysis of the raw signal obtained directly from the laser, without passing through any of our electronic components or the acousto-optic modulator (AOM), reveals a relative error of 1.2% over the 100-pulse window. This finding suggests that enhancing our optical alignment and circuit design could potentially reduce the inherent error in our pulsed laser setup, which currently stands at 4.3%.
+
+It is important to note that the raw signal we obtained does not undergo any stabilization feedback loop. In contrast, the pulsed laser signal being evaluated for one sampling window lacks a significant stabilization feedback loop as well. By comparing the performance of these signals at this short time scale with their behavior at a much longer time scale, we can assess the efficacy of our stabilization mechanism.
+
+By conducting such comparisons, we can gain insights into the actual effectiveness of our stabilization process and understand the extent to which it mitigates the fluctuations and instability in the pulsed laser system. This analysis will allow us to evaluate the performance of our stabilization feedback loop and potentially identify areas for further improvement.
 
 ### Overnight Trial
-<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/one sampling window.png" width="1000">
-## Simulating Practical Fluctuations
+<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/long_term_performance.png" width="1000">
+This is a histogram of observed pulsed laser intensity signals for a 6 hour, overnight trial for a 5us pulse width. In this experiment, our stabilization feedback loop is running over this long time scale and is able to provide significant adjustments. We find that our relative error for this experiment was 4.4%! Although we did not achieve our goal of 1% stabilizing relative error for a 5us pulse width, we were able to get almost the same value for our relative error as our proclaimed inherent error! This means that our stabilization feedback system seems to work well at longer time scales and more careful consideration of reducing noise in our system could help us improve this 4.4% relative error. 
+
+In a comparision with the raw signal, 
+### Simulating Practical Fluctuations
 Our testing laser does not drift significantly over long time, therefore, to show the effect of our stabilization, we placed a variable filter in front of the laser which blocked a portion of light depending on how much it is rotated. Below are two situations which could happen in practice. <br />
 
 ### Adiabatic Fluctuation
