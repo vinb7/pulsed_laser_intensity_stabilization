@@ -45,6 +45,7 @@ We also added a non-inverting op-amp with gain 7x between the photodiode and the
 
 ## Acousto-Optics Modulator (AOM)
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/AOM_diffraction.png.jpg" width="600">
+<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/aom_explanation.png" width="1000">
 
 ## Voltage Variable Attenuator (VVA)
 
