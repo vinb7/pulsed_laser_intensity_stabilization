@@ -167,3 +167,9 @@ By focusing on improving stabilization mechanisms at shorter timescales, we anti
 The top priority is to find a microcontroller with faster sampling rate and shorter processing time. We made the Arduino DUE to work by designing sophisticated algorithm, which sacrifices short-term stability for long-term reliability. Currently, the Arduino is ignorant of fluctuations faster than 100ms, which makes our goal of suppressing the flunctuation down to 1% unreachable. However, if a new microcontroller can keep up with the short pulse length, a more straightforward algorithm can be employed which should make this blind time much shorter and therefore we can address those fast fluctuations. <br />
 <br />
 Our current setup concerns most about fast iteration, so we used breadboards for circuit. However, breadboard is more susceptible to noise than a printed circuit board, so we should switch to PCB once we are confident with our final circuit design. We should also replace the two exterior DC power supplies with Acopian AC-DC supplies to make the PCB more compact and portable. 
+
+#Contributors
+This project was made for UCSB's PHYS CS15C course by Vinay Baid, Tommy Dan, and Zhuoru Li.
+We also want to thank Luka Sever-Walter, Sam Gebretsadkan, and Chaoshen Zhang, for their previous work on laser intensity stabilization upon which this project is built.
+
+Continuous Wave Intensity Stabilization from Sam Gebretsadkan & Chaoshen Zhang - https://github.com/Jayich-Lab/laser_intensity_stabilization
