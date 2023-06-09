@@ -91,6 +91,9 @@ The derivative (D) correction is used as a damping term to suppress overshoots a
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/D_coefficient.png" width="1000">
 
 # Results
+## Peak Fluctuation
+<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/peak fluctuation.png" width="1000">
+When we test high frequency pulses, we lose the ability to stabilize each peak. Due to the runtime of the arduino functions and the relatively short pulse widths we are testing, we can grab 0-2 data points per peak. 
 ## Simulating Practical Fluctuations
 Our testing laser does not drift significantly over long time, therefore, to show the effect of our stabilization, we placed a variable filter in front of the laser which blocked a portion of light depending on how much it is rotated. Below are two situations which could happen in practice. <br />
 ### Adiabatic Fluctuation
