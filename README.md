@@ -31,7 +31,7 @@ Our goal for this project is to build a reliable laser intensity stabilizing dev
 # Schematics
 ## Experiment Setup Schematics
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/branch_Tommy/Setup_Schematics.png" width="1000">
-We have a 635nm laser first shining into a sequence of optics, where the light is split into two portions. A portion goes directly into a photodiode and becomes our raw signal - we monitor the change of laser intensity using this signal. The other portion of the laser goes through an acousto-optic modulator, or AOM, which acts as a diffraction grating and can diffract incident light into different angles. For our setup, we take the first order light. This first order light will be the output, and be fed back to the Arduino. This is the signal we want to stabilize. The Arduino then calculates a correction signal, feeding it into a Voltage Variable Attenuator, or VVA, to control how much power the AOM gets by attenuating the pulsed signal from a function generator. The more power the AOM gets, the more optical power is distributed to the first order light.
+We have a 635nm laser first shining into a sequence of optics, where the light is split into two portions. A portion (how large this portion is depends on the dynamic range of our setup) of the laser power goes directly into a photodiode and becomes our raw signal - we monitor the change of laser intensity using this signal. The other portion of the laser power goes through an acousto-optic modulator, or AOM, which acts as a diffraction grating and can diffract incident light into different angles. For our setup, we take the first order light as our output, and it is fed back to the Arduino pin A1. This is the signal we want to stabilize. The Arduino then calculates a correction signal, outputting the voltage from pin DAC1, feeding it into a Voltage Variable Attenuator, or VVA, to control how much power the AOM gets by attenuating the pulsed signal from a function generator. The more power the AOM gets, the more optical power is distributed to the first order light.
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/branch_Tommy/Experimental_Setup.png" width="1000">
 
 ## Acousto-Optics Modulator (AOM)
@@ -46,7 +46,17 @@ The first order diffraction efficiency of AOM is crucial in determining our dyna
 
 
 ## Arduino DUE
-<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/branch_Tommy/Arduino_DUE.png" width="1000">
+<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/branch_tommy/Arduino_DUE.png" width="1000">
+Arduino DUE is a common, accessible microcontroller that allows us to read input voltage, output voltage, and calculate corrections using a PID algorithm. Voltage generated from the photodiode taking the stabilized signal is fed into one of its Analog-to-Digital Converter pin, and after calculating the PID error signal, a correction voltage is outputted from one of its Digital-to-Analog Converter pin to vary the power received by the AOM. 
+
+Arduino DUE is the fastest among the Arduino family, in terms of sampling rate and processing speed. However, it turned out that for our goal of stabilzing a 5us pulse, the speed of the Arduino DUE is still insufficient. Below is a summary of the time taken by different Arduino commands: 
+
+digitalRead(): 1.2us <br />
+read_adc(): 1.8us <br />
+micros(): 1.3us <br />
+analogWrite(): 3.8us <br />
+Serial.println(“ “): 1.3ms <br />
+loop(): 25us [nothing is in the loop()] 
 
 
 # Feedback Loop
