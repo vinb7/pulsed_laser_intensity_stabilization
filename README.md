@@ -68,9 +68,9 @@ read_adc() and analogWrite() take time on the order of the pulse length. So when
 ## Proportional-Integral-Derivative (PID) Controller
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/PID_Control.png" width="1000">
 After the Arduino successfully samples one ADC reading, it passes that value, called the signal, to our PID controller. First, the signal is compared with a setpoint, which represents the desired intensity level set by the user, and the difference of these two values are multiplied by the k_p coefficient - this gives the proportional (P) correction. The P correction acts like a reaction force - the more deviated the signal is from the setpoint, the stronger the correction is. And the P coefficient gives a measure of how strong the reaction is. A judicious choice of the P coefficient is important, because a large P coefficient will result in oscillation whereas a small P coefficient makes the stabilizating process slow. <br />
-
+<br />
 By P correction along, often the intensity cannot get back to the setpoint. This is because when the difference between the setpoint and the signal becomes smaller, the P correction also diminishes, resulting in weaker correcting power. Eventually, the geometric series converges to some fixed value, away from the setpoint. Thus, we introduce the integral (I) correction. The I correction sums all the previous errors (defined as signal - setpoint), and tries to minimize this cumulated error. It is therefore able to detect the aforementioned constant offset and bring the intensity to the wanted value. <br />
-
+<br />
 The derivative (D) correction is used as a damping term to suppress overshoots and oscillations. When the P coefficient is too large, the controller tends to overcorrect for an error, which introduces extra noise and could sometimes damage the system. The D correction is proportional to the derivative of the signal, so when the signal is changing too fast, either because of overcorrecting or the signal is truly flunctuating suddenly, the D correction kicks in to slow down these abrupt changes. Below is a plot from the scope that shows how turning on the D term helps calming down the oscillation.
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/D_Coefficient.png" width="1000">
 # Future Plan
