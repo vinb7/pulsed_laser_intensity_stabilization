@@ -168,8 +168,9 @@ The top priority is to find a microcontroller with faster sampling rate and shor
 <br />
 Our current setup concerns most about fast iteration, so we used breadboards for circuit. However, breadboard is more susceptible to noise than a printed circuit board, so we should switch to PCB once we are confident with our final circuit design. We should also replace the two exterior DC power supplies with Acopian AC-DC supplies to make the PCB more compact and portable. 
 
-#Contributors
-This project was made for UCSB's PHYS CS15C course by Vinay Baid, Tommy Dan, and Zhuoru Li.
-We also want to thank Luka Sever-Walter, Sam Gebretsadkan, and Chaoshen Zhang, for their previous work on laser intensity stabilization upon which this project is built.
-
-Continuous Wave Intensity Stabilization from Sam Gebretsadkan & Chaoshen Zhang - https://github.com/Jayich-Lab/laser_intensity_stabilization
+# Contributors
+This project was made for UCSB's PHYS CS15C course by Zhuoru Li, Tommy Dan, and Vinay Baid.<br />
+<br />
+This project was built upon the [Continuous-Wave Intensity Stabilization](https://github.com/Jayich-Lab/laser_intensity_stabilization) by Chaoshen Zhang, Sam Gebretsadkan, Vivian Liao and Rei Landsberger. <br />
+<br />
+We especially want to thank Luka Sever-Walter, Sam Gebretsadkan, and Chaoshen Zhang, for their continuous support over the course of this project. <br />
