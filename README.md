@@ -48,7 +48,7 @@ The first order diffraction efficiency of AOM is crucial in determining our dyna
 
 ## Arduino DUE
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/branch_tommy/Arduino_DUE.png" width="1000">
-Arduino DUE is a common, accessible microcontroller that allows us to read input voltage, output voltage, and calculate corrections using a PID algorithm. Voltage generated from the photodiode taking the stabilized signal is fed into one of its Analog-to-Digital Converter pin, and after calculating the PID error signal, a correction voltage is outputted from one of its Digital-to-Analog Converter pin to vary the power received by the AOM. <br />
+Arduino DUE is a common, accessible microcontroller that allows us to read input voltage, output voltage, and calculate corrections using a PID algorithm. Voltage generated from the photodiode taking the stabilized signal is fed into one of its Analog-to-Digital Converter (ADC) pin, and after calculating the PID error signal, a correction voltage is outputted from one of its Digital-to-Analog Converter (DAC) pin to vary the power received by the AOM. <br />
 <br />
 Arduino DUE is the fastest among the Arduino family, in terms of sampling rate and processing speed. However, it turned out that for our purpose of stabilzing a 5us pulse, the speed of the Arduino DUE is still insufficient. Below is a summary of the time taken by different Arduino commands: <br />
 <br />
@@ -57,9 +57,11 @@ read_adc(): 1.8us <br />
 micros(): 1.3us <br />
 analogWrite(): 3.8us <br />
 Serial.println(“ “): 1.3ms <br />
-loop(): 25us [nothing is in the loop()] 
+loop(): 25us [nothing is in the loop()] <br />
+<br />
 
-
+read_adc() and analogWrite() take time on the order of the pulse length. So when the pulse length approaches these commands' runtimes, it happens frequently that a read_adc() which we expect to be executed when the pulse is high, actually returns a value (typically 0) when the pulse is low. This greatly compromises our stability because a reading of 0 misleads the Arduino to think that the intensity of the laser has dropped significantly so it needs to increase the power giving to the AOM. The result is a sudden jump on the laser intensity. This has been observed and is mitigated by our Max_Value Algorithm. <br />
+<br />
 # Feedback Loop
 ## PID Controller
 
