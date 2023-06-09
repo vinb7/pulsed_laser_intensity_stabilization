@@ -17,7 +17,7 @@ electrogmagnetic field, which in many cases corresponds to the intensity of a la
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/Rabi Freq.png" width="500">
 
 # Goal
-Our goal for this project is to build a reliable laser intensity stabilizing device, exploiting PID feedback control, to stabilize a pulsed laser. We aim to suppress power flunctuation down to 1% for a pulse width of 5 us.
+Our goal for this project is to build a reliable laser intensity stabilizing device, exploiting PID feedback control, to stabilize a **Bold pulsed** laser. We aim to suppress power flunctuation down to 1% for a pulse width of 5 us.
 
 # List of Components
 - Laser: [PL202 Thorlab Compact Laser](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=12994) 
@@ -75,4 +75,5 @@ By P correction along, often the intensity cannot get back to the setpoint. This
 <br />
 The derivative (D) correction is used as a damping term to suppress overshoots and oscillations. When the P coefficient is too large, the controller tends to overcorrect for an error, which introduces extra noise and could sometimes damage the system. The D correction is proportional to the derivative of the signal, so when the signal is changing too fast, either because of overcorrecting or the signal is truly flunctuating suddenly, the D correction kicks in to slow down these abrupt changes. Below is a plot from the scope that shows how turning on the D term helps calming down the oscillation.
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/D_coefficient.png" width="1000">
+
 # Future Plan
