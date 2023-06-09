@@ -173,4 +173,4 @@ This project was made for UCSB's PHYS CS15C course by Zhuoru Li, Tommy Dan, and 
 <br />
 This project was built upon the [Continuous-Wave Intensity Stabilization](https://github.com/Jayich-Lab/laser_intensity_stabilization) by Chaoshen Zhang, Sam Gebretsadkan, Vivian Liao and Rei Landsberger. <br />
 <br />
-We especially want to thank Luka Sever-Walter, Sam Gebretsadkan, and Chaoshen Zhang, for their continuous support over the course of this project. <br />
+We especially want to thank Luka Sever-Walter, Sam Gebretsadkan, Chaoshen Zhang, Professor Andrew Jayich, Eric Deck, and Robert Kwapisz for their continuous support over the course of this project. <br />
