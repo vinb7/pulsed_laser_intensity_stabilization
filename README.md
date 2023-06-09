@@ -91,16 +91,30 @@ The derivative (D) correction is used as a damping term to suppress overshoots a
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/D_coefficient.png" width="1000">
 
 # Results
-## Peak Fluctuation
+### Peak Fluctuation
 <img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/peak fluctuation.png" width="1000">
-When conducting tests on high frequency pulses, we encounter a challenge in stabilizing each peak adequately. This difficulty arises due to the runtime of the Arduino functions and the relatively short pulse widths being tested. 
+When conducting tests on high frequency pulses, such as a 5us pulse width, we encounter a challenge in stabilizing each peak adequately. This difficulty arises due to the runtime of the Arduino functions and the relatively short pulse widths being tested. 
 As a result, we are only able to capture 0 to 2 data points per peak. The plot provided above showcases the fluctuation in laser intensity observed at a few peaks. Notably, we discovered that the peak value itself exhibited a significant fluctuation of approximately 12%. 
 This inconsistency highlights the limitations imposed by the testing conditions and emphasizes the need for improved methods to stabilize the peaks in such high frequency pulse experiments.
-## One Sampling Window for Arduino
+
+### One Sampling Window for Arduino
 <img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/one sampling window.png" width="1000">
-This plot shows our stabilization results for one sampling window for the arduino. We see two peaks, one at 0 V and one centered around 0.53 V seperated by a few intermediatary values that are so sparse, they are hardly visible in the plot. Considering the distribution corresponding to the laser being on (the distribution around 0.53 V), we obtain a relative error of 4.3% of our laser's stability. We calculate this relative error by finding the standard deviation of all the measurements in our trial, then dividing the standard deviation by the mean. Since this is one sampling window, we've run virtually no stabilization so far and this 4.3% relative error is rather a characterization of our system's limitations (including noise from our electronic components and limitations from the oscilliscope for data collection.
+This plot represents the results of our stabilization efforts for a single sampling window using an Arduino with a 5μs pulse width. In the plot, we observe two distinct peaks: one located at 0V and another centered around 0.53V. However, the intermediate values between these peaks are so sparsely sampled that they are barely discernible on the plot.
+
+Focusing on the distribution associated with the laser being on, specifically the peak around 0.53V, we can calculate the relative error as a measure of the laser's stability. To determine the relative error, we compute the standard deviation of all the measurements within our trial and divide it by the mean value. In this case, the relative error is found to be 4.3%.
+
+It is important to note that this sampling window represents a scenario where we have not yet implemented significant stabilization measures. Therefore, the 4.3% relative error primarily reflects the limitations of our system, including noise from electronic components and constraints imposed by the oscilloscope used for data collection. This relative error serves as a characterization of our system's current capabilities rather than an achievement towards our goal of attaining a 1% relative error for a 5μs pulse width.
+
+However, despite the challenges encountered, this characterization provides valuable insights into the long-term performance of our feedback loop. It highlights the areas where improvements are needed to enhance the stability and precision of our laser system..
+
+<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/raw one sampling window.png" width="1000">
+We see that just the raw signal from the laser itself, without passing through the AOM or any of our electronic components had a relative error of 1.2% over this short 100 pulse window. This means being more careful with our optical allignment and circuit design could help us decrease the proclaimed "inherent" error in our pulsed laser setup of 4.3%. Since this raw signal has no stabilization feedback loop working on it, and for one sampling window, our pulsed laser has virtually no stabilization feedback loop working on it, we can compare their values at this very short time scale to their values at a very long time scale to characterize how well our stabilization actually works.
+
+### Overnight Trial
+<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/one sampling window.png" width="1000">
 ## Simulating Practical Fluctuations
 Our testing laser does not drift significantly over long time, therefore, to show the effect of our stabilization, we placed a variable filter in front of the laser which blocked a portion of light depending on how much it is rotated. Below are two situations which could happen in practice. <br />
+
 ### Adiabatic Fluctuation
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/Gradual.png" width="1000">
 For this plot, we were changing the filter gradually. The raw signal is changing wildly in amplitude, however, the stabilized signal remains at the setpoint. This shows that the stabilization is taking place. This artificial fluctuation takes 18s to complete, which may seem to be slow, but the speed of this fluctuation is still very large compared to more realistic drifts, so we expect our device to handle slower, more realistic fluctuations just as well.<br />
