@@ -116,9 +116,24 @@ By conducting such comparisons, we can gain insights into the actual effectivene
 
 ### Overnight Trial
 <img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/long_term_performance.png" width="1000">
-This is a histogram of observed pulsed laser intensity signals for a 6 hour, overnight trial for a 5us pulse width. In this experiment, our stabilization feedback loop is running over this long time scale and is able to provide significant adjustments. We find that our relative error for this experiment was 4.4%! Although we did not achieve our goal of 1% stabilizing relative error for a 5us pulse width, we were able to get almost the same value for our relative error as our proclaimed inherent error! This means that our stabilization feedback system seems to work well at longer time scales and more careful consideration of reducing noise in our system could help us improve this 4.4% relative error. 
+The histogram presented here illustrates the observed intensity signals of a pulsed laser over a 6-hour overnight trial, focusing on a 5μs pulse width. Throughout this experiment, our stabilization feedback loop operated continuously over this extended time scale, providing substantial adjustments to stabilize the laser intensity.
 
-In a comparision with the raw signal, 
+Upon analyzing the data, we determined that the relative error for this particular experiment was measured at 4.4%. While this value falls short of our desired goal of achieving a 1% relative error for a 5μs pulse width, the relative error obtained aligns closely with the proclaimed inherent error of 4.3% discussed in the previous section!
+
+This finding suggests that our stabilization feedback system performs well when operating over longer time scales. However, it also indicates that further attention should be given to reducing noise within the system. By taking measures to mitigate noise sources and optimize the overall system design, we can potentially enhance the stability of the pulsed laser and further improve the 4.4% relative error.
+
+By acknowledging the nearly equivalent values of the relative error and the proclaimed inherent error, we can gain confidence in the effectiveness of our stabilization feedback system and recognize the importance of addressing noise-related factors to achieve greater precision in our experiments.
+
+<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/Screen Shot 2023-06-09 at 8.40.23 AM.png" width = "1000">
+
+In contrast to the stabilization feedback loop's ability to maintain a consistent precision over time, we observe a drift in the precision of the raw signal's intensity. Specifically, the relative error of the raw signal increased from 1.2% to 3.2% over the duration of the experiment. This finding suggests that without the stabilization feedback loop, the precision of the raw signal deteriorates over time.
+
+To improve our inherent error, reducing noise from the electrical components plays a crucial role. By replacing the current breadboards with a printed circuit board (PCB) design, we anticipate a significant reduction in noise and an improvement in the inherent error of our laser system. The PCB design offers better electrical performance, enhanced signal integrity, and reduced interference, which are vital for achieving higher precision.
+
+Additionally, exploring new algorithms for feedback loops that can effectively stabilize the laser system on the nano/microsecond scale holds promise for further improving our results. Such algorithms can take advantage of advanced control techniques and sophisticated signal processing methods to enhance the stability and precision of the pulsed laser system.
+
+By addressing these factors—reducing noise through a PCB design and exploring innovative feedback loop algorithms—we can make significant strides in reducing the inherent error and achieving better precision in our laser system. These improvements will contribute to the overall advancement of our experimental capabilities and enable more accurate and reliable measurements.
+
 ### Simulating Practical Fluctuations
 Our testing laser does not drift significantly over long time, therefore, to show the effect of our stabilization, we placed a variable filter in front of the laser which blocked a portion of light depending on how much it is rotated. Below are two situations which could happen in practice. <br />
 
