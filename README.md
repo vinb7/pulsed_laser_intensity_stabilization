@@ -44,8 +44,16 @@ To increase our dynamic range, we want the control voltage going into the VVA to
 We also added a non-inverting op-amp with gain 7x between the photodiode and the Arduino ADC. In practice, our device should disturb with the experiments minimally, that implies only taking a small portion of laser power to feed into our stabilization loop. Hence, the signal given by the detecting photodiode will be weak and we want to amplify it so the Arduino can resolve the signal better.
 
 ## Acousto-Optics Modulator (AOM)
+
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/AOM_diffraction.png.jpg" width="600">
-<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/aom_explanation.png" width="1000">
+<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/aom_diffraction.png" width="1000">
+An Acousto-Optics Modulator (AOM) uses the interactions between light waves and sound waves to control properties of a laser beam. When an electrical signal with a specific radio frequency (RF) is applied to the transducer, it begins generating sound waves within the AOM crystal. The sound waves moving through the crystal cause periodic changes in density known as compression and rarefaction zones. These density fluctuations, in turn, affect the refractive index of the crystal material.
+
+When a laser beam is directed into the AOM at a particular angle, it interacts with the varying refractive index regions. This interaction leads to intriguing effects such as diffraction and modulation as the laser beam passes through the crystal. In our experiment, we pulsed the AOM and utilized the first order diffracted beam to obtain our pulsing laser beam for stabilization.
+
+We select the first order beam from the AOM because it proves us with the largest dynamic range, or ratio between the largest and smallest values of intensity outputted by the AOM.
+
+The intensity of our first order pulsing laser beam can be controlled by the control signal that governs the AOM. We use our VVA to attenuate the control signal supplied to the AOM and thereby control the intensity of our beam
 
 ## Voltage Variable Attenuator (VVA)
 
