@@ -63,6 +63,7 @@ loop(): 25us [nothing is in the loop()] <br />
 read_adc() and analogWrite() take time on the order of the pulse length. So when the pulse length approaches these commands' runtimes, it happens frequently that a read_adc() which we expect to be executed when the pulse is high, actually returns a value (typically 0) when the pulse is low. This greatly compromises our stability because a reading of 0 misleads the Arduino to think that the intensity of the laser has dropped significantly so it needs to increase the power giving to the AOM. The result is a sudden jump on the laser intensity. This has been observed and is mitigated by our Max_Value Algorithm. <br />
 <br />
 # Feedback Loop
+
 ## PID Controller
 
 # Future Plan
