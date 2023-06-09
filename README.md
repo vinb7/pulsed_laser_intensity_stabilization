@@ -9,6 +9,7 @@
   - [Arduino DUE](#Arduino-DUE)
   - [Voltage Variable Attenuator](#Voltage-Variable-Attenuator-(VVA))
 - [Feedback Loop](#Feedback-Loop)
+- [Results](#Results)
 - [Future Plans](#Future-Plan)
 
 # Motivation
@@ -17,7 +18,7 @@ electrogmagnetic field, which in many cases corresponds to the intensity of a la
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/Rabi Freq.png" width="500">
 
 # Goal
-Our goal for this project is to build a reliable laser intensity stabilizing device, exploiting PID feedback control, to stabilize a pulsed laser. We aim to suppress power flunctuation down to 1% for a pulse width of 5 us.
+Our goal for this project is to build a reliable laser intensity stabilizing device, exploiting PID feedback control, to stabilize a **Bold pulsed** laser. We aim to suppress power flunctuation down to 1% for a pulse width of 5 us.
 
 # List of Components
 - Laser: [PL202 Thorlab Compact Laser](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=12994) 
@@ -31,7 +32,7 @@ Our goal for this project is to build a reliable laser intensity stabilizing dev
 # Schematics
 ## Experiment Setup Schematics
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/Setup_Schematics.png" width="1000">
-We have a 635nm laser first shining into a sequence of optics, where the light is split into two portions. A portion (how large this portion is depends on the [dynamic range](#Acousto-Optics-Modulator-(AOM)) of our setup) of the laser power goes directly into a photodiode and becomes our raw signal - we monitor the change of laser intensity using this signal. The other portion of the laser power goes through an acousto-optic modulator, or AOM, which acts as a diffraction grating and can diffract incident light into different angles. For our setup, we take the first order light as our output, and it is fed back to the Arduino pin A1. This is the signal we want to stabilize. The Arduino then calculates a correction signal, outputting the voltage from pin DAC1, feeding it into a Voltage Variable Attenuator, or VVA, to control how much power the AOM gets by attenuating the pulsed signal from a function generator. The more power the AOM gets, the more optical power is distributed to the first order light.
+We have a 635nm laser first shining into a sequence of optics, where the light is split into two portions. A portion (how large this portion is depends on the [dynamic range](#Acousto-Optics-Modulator-(AOM)) of our setup) of the laser power goes directly into a photodiode and becomes our raw signal - we monitor the change of laser intensity using this signal. The other portion of the laser power goes through an acousto-optic modulator, or AOM, which acts as a diffraction grating and can diffract incident light into different angles. For our setup, we take the first order light as our output, and it is fed back to the Arduino pin A1. This is the signal we want to stabilize. The Arduino then calculates a correction signal, outputting the voltage from pin DAC1, feeding it into a Voltage Variable Attenuator, or VVA, to control how much power the AOM gets by attenuating the pulsed signal from a function generator, which is set to output a 100kHz pulse signal with 50% duty cycle. The more power the AOM gets, the more optical power is distributed to the first order light.
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/Experimental_Setup.png" width="1000">
 
 ## Acousto-Optics Modulator (AOM)
@@ -75,4 +76,18 @@ By P correction along, often the intensity cannot get back to the setpoint. This
 <br />
 The derivative (D) correction is used as a damping term to suppress overshoots and oscillations. When the P coefficient is too large, the controller tends to overcorrect for an error, which introduces extra noise and could sometimes damage the system. The D correction is proportional to the derivative of the signal, so when the signal is changing too fast, either because of overcorrecting or the signal is truly flunctuating suddenly, the D correction kicks in to slow down these abrupt changes. Below is a plot from the scope that shows how turning on the D term helps calming down the oscillation.
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/D_coefficient.png" width="1000">
+
+# Results
+## Simulating Practical Fluctuations
+Our testing laser does not drift significantly over long time, therefore, to show the effect of our stabilization, we placed a variable filter in front of the laser which blocked a portion of light depending on how much it is rotated. Below are two situations which could happen in practice. <br />
+<br />
+<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/Gradual.png" width="1000">
+For this plot, we were changing the filter gradually. The raw signal is changing wildly in amplitude, however, the stabilized signal remains at the setpoint. This shows that the stabilization is taking place. This artificial fluctuation takes 18s to complete, which may seem to be slow, but the speed of this fluctuation is still very large compared to more realistic drifts, so we expect our device to handle slower, more realistic fluctuations just as well.<br />
+<br />
+At the right end, the stabilized signal is brought up by a larger fluctuation and the stabilization fails. This is because when the raw signal is higher than the setpoint, the Arduino tries to output a low voltage to increase the attenuation of the VVA, so the AOM gets less power and less optical power will be delivered; however, the Arduino output has got to the minimum and it cannot lower the intensity any more. So the stabilized signal is now swinging with the fluctuation. This is what happens when the error is out of the dynamic range. <br />
+<br />
+<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/Deadtime.png" width="1000">
+This is simulating when people stop running experiments and only come back sometimes later. When no experiment is running, the laser is blocked but is still on and drifting, yet the Arduino receives no information regarding how the laser intensity is changing Then, when people restart the experiment, we expect our device to bring back the free-running laser despite this lack of information. As we see here, the stabilization is able to function even after a period of long deadtime. How long it takes to bring back the optical power depends on the settings of PID coefficients. With our default setting, we typically saw stabilization within 10ms.<br />
+<br />
+
 # Future Plan
