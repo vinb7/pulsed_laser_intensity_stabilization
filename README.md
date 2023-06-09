@@ -78,7 +78,7 @@ P.S.: When working with Arduino code (.ino), be mindful that many C++ standard l
 # Feedback Loop
 ## Short Pulse Sampling
 We are currently implementing a peak average algorithm to capture the laser beam intensity and calculate error signal. Essentially we calculate the error signal based on past 100 ADC readings by sorting this array and averaging the leading 10 terms. These two numbers (100, 10) are very conservative choice for now and we have tested them to perform good stabilization. Ideally we hope the sampling window and number of leading terms to be able to self-adjust to different frequency and duty cycle. We have attempted synchronizing arduino ADC sampling with the real laser pulse by either using a Transistor-Transistor Logic(TTL) or directly sending pulse signal synchronized with laser pulse to arduino's digital pin. However due multiple constraints from arduino runtime, we observe distinct phase mismatch between two pulses which basically introduce plenty of unwanted random intermediate and off-pulse voltage level. We also attempted taking max over a smaller sampling window; however, our current test laser and pulsing mechanism displays ~3% fluctuation at microsecond scale. Below is a graph of typical arduino ADC readout:
-<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/ADC_read_out.png" width="1000">
+<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/ADC_readout.PNG" width="600">
 
 
 ## Proportional-Integral-Derivative (PID) Controller
