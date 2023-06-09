@@ -37,6 +37,8 @@ We have a 635nm laser first shining into a sequence of optics, where the light i
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/Experimental_Setup.png" width="1000">
 
 ## Acousto-Optics Modulator (AOM)
+<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/AOM_diffraction.png.jpg" width="1000">
+
 ## Voltage Variable Attenuator (VVA)
 
 
