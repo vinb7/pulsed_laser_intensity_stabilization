@@ -35,6 +35,7 @@ Our goal for this project is to build a reliable laser intensity stabilizing dev
 We have a 635nm laser first shining into a sequence of optics, where the light is split into two portions. A portion (how large this portion is depends on the [dynamic range](#Acousto-Optics-Modulator-(AOM)) of our setup) of the laser power goes directly into a photodiode and becomes our raw signal - we monitor the change of laser intensity using this signal. The other portion of the laser power goes through an acousto-optic modulator, or AOM, which acts as a diffraction grating and can diffract incident light into different angles. For our setup, we take the first order light as our output, and it is fed back to the Arduino pin A1. This is the signal we want to stabilize. The Arduino then calculates a correction signal, outputting the voltage from pin DAC1, feeding it into a Voltage Variable Attenuator, or VVA, to control how much power the AOM gets by attenuating the pulsed signal from a function generator, which is set to output a 100kHz pulse signal with 50% duty cycle. The more power the AOM gets, the more optical power is distributed to the first order light.
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/Experimental_Setup.png" width="1000">
 
+## Circuit
 ## Acousto-Optics Modulator (AOM)
 ## Voltage Variable Attenuator (VVA)
 
@@ -92,3 +93,6 @@ This is simulating when people stop running experiments and only come back somet
 <br />
 
 # Future Plan
+The top priority is to find a microcontroller with faster sampling rate and shorter processing time. We made the Arduino DUE to work by designing sophisticated algorithm, which sacrifices short-term stability for long-term reliability. Currently, the Arduino is ignorant of fluctuations faster than 100ms, which makes our goal of suppressing the flunctuation down to 1% unreachable. However, if a new microcontroller can keep up with the short pulse length, a more straightforward algorithm can be employed which should make this blind time much shorter and therefore we can address those fast fluctuations. <br />
+<br />
+Our current setup concerns most about fast iteration, so we used breadboards for circuit. However, breadboard is more susceptible to noise than a printed circuit board, so we should switch to PCB once we are confident with our final circuit design. We should also replace the two exterior DC power supplies with Acopian AC-DC supplies to make the PCB more compact and portable. 
