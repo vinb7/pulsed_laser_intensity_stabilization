@@ -114,11 +114,11 @@ It is worth noting that an overnight trial contains tens of thousands of data wi
 
 <img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/Screen Shot 2023-06-09 at 8.40.23 AM.png" width = "1000">
 
-In contrast to the stabilization feedback loop's ability to maintain a consistent precision over time, we observe a drift in the raw signal's intensity. The percentage error of the raw signal is 3.2% for this 6-hour trial, 3 times the percentage error for a 300us trial, which suggests a drift in the laser intensity in the long run. If there is no stabilization happening, we would expect the stabilized signal to have a 3 times larger percentage error, compared to the percentage error within one sampling window. 
+We observe a drift in the raw signal's intensity for this 6-hour trial: the percentage error of the raw signal is 3.2%, 3 times the percentage error for a 300us trial, which suggests a drift in the laser intensity in the long run. If there is no stabilization happening, we would expect the stabilized signal to have a 3 times larger percentage error as well, compared to the percentage error within one sampling window (4.3%). 
 
 <img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/long_term_performance.png" width="1000">
 
-The histogram presented above illustrates the stabilized intensity signals of a pulsed laser over a 6-hour overnight trial. The percentage error for this stabilized signal was 4.4%. While this value falls short of our goal of 1%, it aligns closely with the 4.3% error of the system's short-term fluctuation over 1 sampling window, which shows that our device is suppressing any detectable errors (longer than 1 sampling window).
+The histogram presented above illustrates the stabilized intensity signals of a pulsed laser over a 6-hour overnight trial. The percentage error for this stabilized signal was 4.4%, no where near the 3x drift of the raw signal. While this value falls short of our goal of 1%, it aligns closely with the 4.3% error of the system's short-term fluctuation over 1 sampling window, which shows that our device is suppressing any detectable errors (longer than 1 sampling window).
 
 ## Simulating Practical Fluctuations
 Our testing laser does not drift significantly over long time, therefore, to show the effect of our stabilization, we placed a variable filter in front of the laser which blocked a portion of light depending on how much it is rotated. Below are two situations which could happen in practice. <br />
