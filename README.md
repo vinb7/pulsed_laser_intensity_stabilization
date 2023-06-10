@@ -1,6 +1,6 @@
 # Pulsed Laser Intensity Stabilization
 
-***for mmmmmooooorrrrreeeee information, please look at our [development notebook (page 40 - 135)](https://docs.google.com/document/d/1LQWBTo_NxfFsRtgr4UB_30VIzrIzUXYY4XpfK6IdY2c/edit#)***
+***For mmmmmooooorrrrreeeee information, check our [development notebook (page 40 - 135)](https://docs.google.com/document/d/1LQWBTo_NxfFsRtgr4UB_30VIzrIzUXYY4XpfK6IdY2c/edit#).***
 
 ## Table of Contents
 - [Motivation](#Motivation)
@@ -15,8 +15,12 @@
 - [Future Plans](#Future-Plan)
 
 # Motivation
-In spectroscopy experiments, an unstable laser intensity could have negative impact, one example being the Rabi Flopping. Rabi Flopping occurs when an electromagnetic field (in our experiment, a laser beam) interacts with a two level system causing an oscillation between the two quantum states. This results in periodic energy exchanges between the two states in our system. When the laser intensity varies, the excitation and de-excitation rates in the Rabi oscillation can deviate from their expected values. This leads to shifts in the Rabi oscillation frequencies, causing a mismatch between the observed transitions and the actual energy differences between the quantum states. As a result, the spectroscopic measurements may yield incorrect or imprecise values for the system's energy levels. These shifts can introduce errors in spectroscopy measurements, as the observed transitions between energy levels may not accurately correspond to the actual energy differences in the sample. Therefore, maintaining a stable laser intensity is essential for precise and reliable spectroscopic analyses, ensuring accurate determination of the system's energy levels and avoiding systematic errors in the obtained results.
-<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/Rabi Freq.png" width="500">
+An unstable laser intensity could have negative impact on experiments, one example being the Rabi Flopping. Rabi Flopping occurs when an electromagnetic field, in many cases is the laser, interacts with a two level system causing an oscillation between the two quantum states. The frequency of this oscillation is directly related to the amplitude of the pertubring EM field. <br />
+<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/Rabi Freq.png" width="600">
+
+When the laser intensity varies, the excitation and de-excitation rates in the two level system can deviate from their expected values. This leads to shifts in the Rabi frequency, causing a mismatch between the observed transitions and the actual energy differences between the quantum states. As a result, the spectroscopic measurements may yield imprecise values for the system's energy levels. Therefore, maintaining a stable laser intensity is essential for precise spectroscopic analyses, ensuring accurate determination of the system's energy levels.<br />
+<br />
+Another example is laser cooling, where we often want a specifict laser intensity to achieve the best cooling effect or to avoid heating up an trapped ion. Therefore, we expect the laser intensity to be what we set in a control computer. However, in practice, many factors could affect laser intensity: thermal fluctuation, mechanical vibration, etc.
 
 # Goal
 Our goal for this project is to build a reliable laser intensity stabilizing device, exploiting PID feedback control, to stabilize a **Bold pulsed** laser. We aim to suppress power flunctuation down to 1% for a pulse width of 5 us.
