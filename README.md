@@ -51,7 +51,7 @@ We also added a non-inverting op-amp with gain 7x between the photodiode and the
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/AOM/aom_diffraction.png" width="1000">
 An Acousto-Optics Modulator (AOM) is a device which uses sound waves to control the diffraction, frequency, and intensity of light. When a sinusoidal eletric signal is applied to a transducer inside, it begins generating sound waves within the AOM crystal. This sound wave moving through the crystal causes periodic variations in the material's density, which affects the refractive index of the crystal. This pattern of refractive indices effectively makes the AOM a diffraction grating. <br />
 <br />
-<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/AOM/AOM_diffraction.png.jpg" width="600">
+<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/AOM/AOM_diffraction.png.jpg" width="1000">
 When a laser is directed into the AOM, it is diffracted into different angles. As shown in the picture above, the middle, brightest dot is the 0th order light; the two weaker dots are the +1st and -1st order light - they are bent away from the 0th order light. How much power is distributed into higher order light depends on the amplitude of the powering sinusoidal wave. This ability to change power distribution within different orders of light allows us to change the output intensity in response to fluctuations due to the laser source. For our setup, we use the +1st order beam from the AOM, because its optical power ranges from 0 to ideally 60% of the total incident light. Hence, we can create pulse and obtain a large dynamic range.  <br />
 
 ## Voltage Variable Attenuator (VVA)
