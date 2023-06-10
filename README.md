@@ -116,7 +116,7 @@ It is worth noting that an overnight trial contains tens of thousands of data wi
 
 We observe a drift in the raw signal's intensity for this 6-hour trial: the percentage error of the raw signal is 3.2%, 3 times the percentage error for a 300us trial, which suggests a drift in the laser intensity in the long run. If there is no stabilization happening, we would expect the stabilized signal to have a 3 times larger percentage error as well, compared to the percentage error within one sampling window (4.3%). 
 
-<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/long_term_performance.png" width="1000">
+<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/laser_short_term_fluctuation.PNG" width="1000">
 
 The histogram presented above illustrates the stabilized intensity signals of a pulsed laser over a 6-hour overnight trial. The percentage error for this stabilized signal was 4.4%, no where near the 3x drift of the raw signal. While this value falls short of our goal of 1%, it aligns closely with the 4.3% error of the system's short-term fluctuation over 1 sampling window, which shows that our device is suppressing any detectable errors (longer than 1 sampling window).
 
