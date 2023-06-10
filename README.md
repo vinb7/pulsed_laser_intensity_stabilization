@@ -106,9 +106,6 @@ Every time we update our setup or code we perform an overnight stabilization tri
 <img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/one sampling window.png" width="1000">
 Then we collect data for one sampling window (~300 us) again using the scope to maximize resolution. By plotting a histogram we can select threshold for being on-pulse (~0.04V). Then we apply this threshold cut to the raw data and calculate the percentage error for on-pulse data to be 4.3%. This value characterizes statistical fluctuation in our measurement. To isolate the fluctuation of laser itself, we also take sample data of raw laser power over one sampling window and calculate its percentage error to be 1.2%.
 
-
-
-
 ### Overnight Trial
 <img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/long_term_performance.png" width="1000">
 The histogram presented above illustrates the stabilized intensity signals of a pulsed laser over a 6-hour overnight trial.
@@ -117,7 +114,7 @@ The relative error for this stabilized signal was 4.4%. While this value falls s
 
 <img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/Screen Shot 2023-06-09 at 8.40.23 AM.png" width = "1000">
 
-In contrast to the stabilization feedback loop's ability to maintain a consistent precision over time, we observe a drift in the precision of the raw signal's intensity. Specifically, the relative error of the raw signal increased from 1.2% to 3.2% over the duration of the experiment. This finding suggests that without the stabilization feedback loop, the precision of the raw signal deteriorates over time.
+In contrast to the stabilization feedback loop's ability to maintain a consistent precision over time, we observe a drift in the raw signal's intensity. The relative error, which is a measure of how spread out the power has been, of the raw signal increased from 1.2% to 3.2% over the duration of the experiment, which suggests a drift in the laser  intensity. Putting this raw signal data against with the stabilized signal data, we confirm that there has been fluctuations and our stabilization successfully suppressed them.
 
 ## Simulating Practical Fluctuations
 Our testing laser does not drift significantly over long time, therefore, to show the effect of our stabilization, we placed a variable filter in front of the laser which blocked a portion of light depending on how much it is rotated. Below are two situations which could happen in practice. <br />
