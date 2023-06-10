@@ -48,20 +48,15 @@ We also added a non-inverting op-amp with gain 7x between the photodiode and the
 
 ## Acousto-Optics Modulator (AOM)
 
-<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/AOM_diffraction.png.jpg" width="600">
-<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/aom_diffraction.png" width="1000">
-An Acousto-Optics Modulator (AOM) is a device which uses sound waves to control the diffraction, frequency, and intensity of light. When a sinusoidal eletric signal is applied to the transducer, it begins generating sound waves within the AOM crystal. This sound wave moving through the crystal causes periodic variations in the material density, which affects the refractive index of the crystal.<br />
+<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/AOM/aom_diffraction.png" width="1000">
+An Acousto-Optics Modulator (AOM) is a device which uses sound waves to control the diffraction, frequency, and intensity of light. When a sinusoidal eletric signal is applied to a transducer inside, it begins generating sound waves within the AOM crystal. This sound wave moving through the crystal causes periodic variations in the material's density, which affects the refractive index of the crystal. This pattern of refractive indices effectively makes the AOM a diffraction grating. <br />
 <br />
-When a laser is directed into the AOM at a particular angle, it interacts with the varying refractive index regions. This interaction leads to intriguing effects such as diffraction and modulation as the laser beam passes through the crystal. In our experiment, we pulsed the AOM and utilized the first order diffracted beam to obtain our pulsing laser beam for stabilization.
-
-We select the first order beam from the AOM because it proves us with the largest dynamic range, or ratio between the largest and smallest values of intensity outputted by the AOM.
-
+<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/AOM/AOM_diffraction.png.jpg" width="600">
+When a laser is directed into the AOM, it is diffracted into different angles. For our setup, we use the first order beam from the AOM, because its optical power ranges from 0 to ideally 60% of the total incident light. Hence, we can create pulse and obtain a large dynamic range. <br />
+<br />
 The intensity of our first order pulsing laser beam can be controlled by the control signal that governs the AOM. We use our VVA to attenuate the control signal supplied to the AOM and thereby control the intensity of our beam
 
 ## Voltage Variable Attenuator (VVA)
-
-
-
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/AOM_first_order_power_versus_VVA_tune.png" width="1000">
 The first order diffraction efficiency of AOM is crucial in determining our dynamic range and its dependency on the VVA tune voltage will also determine the circuit design which maps between arduino output and power correction. By carefully adjusting the AOM position，VVA power, VCO power, VCO tune voltage, we are able to achieve a maximum diffraction efficiency up to ~60% (incident laser power ~0.8mV, first order laser power ~0.5mV). (At beginning stage we were using a Voltage Controlled Oscillator(VCO) in generating RF signal that feeds into AOM; later on we switched to a function generator) Then we manually change VVA tune and record the corresponding laser power passing through the AOM with a power meter. This bell-shape figure indicates that we should not go beyond ~6V VVA tune voltage as the AOM saturates and starts to lose modulation efficiency (also potentially damaging the AOM). It is also worth noting that if the arduino DAC output pushes VVA tune beyond this saturation voltage level, the whole relation will invert and we may observe abnormal behavior. If the maximum received power is still below the setpoint, the falling behavior of AOM first order efficiency will send a false signal to arduino which triggers a even larger error signal that in turn further brings up the VVA tune voltage. This ends up into a loop stuck and maximum arduino DAC output with zero stabilization ability and potentially damages the AOM. We confirmed this prediction by observing spontaneous dropping of received laser power. By using a differential op-amp, we were able to linearly map the arduino DAC output (0.5~2.7 V) to (0~6 V) that perfectly terminates at the saturation point. However due to some external considerations we switched to an op-amp with much higher gain which again causes this problem (DAC automatically slides to 2.7V once it reaches around 1.1V）. Thus one major next step is to add it back and also implement an algorithm for double protection.
 
