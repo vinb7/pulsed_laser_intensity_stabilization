@@ -107,7 +107,7 @@ Every time we update our setup or code we perform an overnight stabilization tri
 Then we collect data for one sampling window (~300 us) again using the scope to maximize resolution. By plotting a histogram we can select threshold for being on-pulse (~0.04V). Then we apply this threshold cut to the raw data and calculate the percentage error for on-pulse data to be 4.3%. Inside one sampling window there is no stabilization event happening, so this percentage error characterizes the statistical fluctuation in our measurement, for the stabilized signal. For data we present here and below, we use percentage error as a measure for how stabilized the intensity is: the higher the percentage error, the more spread out the intensity is, the worse the stabilizability.
 
 
-<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/300 us raw.PNG" width="1000">
+<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/300 us raw.png" width="1000">
 To single out the fluctuation of the laser itself, we also take sample data of the raw laser power over one sampling window and calculate its percentage error to be 1.2%. The raw signal being more stabilized than the stabilized signal within one sampling window can be explained by extra uncertainties introduced by the AOM. <br />
 
 
