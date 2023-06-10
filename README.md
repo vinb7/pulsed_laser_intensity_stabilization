@@ -1,6 +1,6 @@
 # Pulsed Laser Intensity Stabilization
 
-***for mmmmmooooorrrrreeeee information, please look at our [development notebook (page 40 - 135)](https://docs.google.com/document/d/1LQWBTo_NxfFsRtgr4UB_30VIzrIzUXYY4XpfK6IdY2c/edit#)***
+***For mmmmmooooorrrrreeeee information, check our [development notebook (page 40 - 135)](https://docs.google.com/document/d/1LQWBTo_NxfFsRtgr4UB_30VIzrIzUXYY4XpfK6IdY2c/edit#).***
 
 ## Table of Contents
 - [Motivation](#Motivation)
