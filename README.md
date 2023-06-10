@@ -28,7 +28,7 @@ Our goal for this project is to build a reliable laser intensity stabilizing dev
 
 # List of Components
 - Laser: [PL202 Thorlab Compact Laser](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=12994) 
-- Acousto-Optics Modulator: [tbd](https://www.lambdaphoto.co.uk/intraaction-atm-series-acousto-optic-modulator.html)
+- Acousto-Optics Modulator: [ATM-2001A2.12](https://www.lambdaphoto.co.uk/intraaction-atm-series-acousto-optic-modulator.html)
 - Voltage Variable Attenuator: [ZX73-2500+](https://www.minicircuits.com/pdfs/ZX73-2500+.pdf)
 - Microcontroller: [Arduino DUE](https://store.arduino.cc/products/arduino-due)
 - RF Amplifier: [ZHL-1-2W+](https://www.minicircuits.com/WebStore/dashboard.html?model=ZHL-1-2W%2B)
