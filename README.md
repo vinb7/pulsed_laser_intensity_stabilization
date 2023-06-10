@@ -50,9 +50,9 @@ We also added a non-inverting op-amp with gain 7x between the photodiode and the
 
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/AOM_diffraction.png.jpg" width="600">
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/aom_diffraction.png" width="1000">
-An Acousto-Optics Modulator (AOM) uses the interactions between light waves and sound waves to control properties of a laser beam. When an electrical signal with a specific radio frequency (RF) is applied to the transducer, it begins generating sound waves within the AOM crystal. The sound waves moving through the crystal cause periodic changes in density known as compression and rarefaction zones. These density fluctuations, in turn, affect the refractive index of the crystal material.
-
-When a laser beam is directed into the AOM at a particular angle, it interacts with the varying refractive index regions. This interaction leads to intriguing effects such as diffraction and modulation as the laser beam passes through the crystal. In our experiment, we pulsed the AOM and utilized the first order diffracted beam to obtain our pulsing laser beam for stabilization.
+An Acousto-Optics Modulator (AOM) is a device which uses sound waves to control the diffraction, frequency, and intensity of light. When a sinusoidal eletric signal is applied to the transducer, it begins generating sound waves within the AOM crystal. This sound wave moving through the crystal causes periodic variations in the material density, which affects the refractive index of the crystal.<br />
+<br />
+When a laser is directed into the AOM at a particular angle, it interacts with the varying refractive index regions. This interaction leads to intriguing effects such as diffraction and modulation as the laser beam passes through the crystal. In our experiment, we pulsed the AOM and utilized the first order diffracted beam to obtain our pulsing laser beam for stabilization.
 
 We select the first order beam from the AOM because it proves us with the largest dynamic range, or ratio between the largest and smallest values of intensity outputted by the AOM.
 
