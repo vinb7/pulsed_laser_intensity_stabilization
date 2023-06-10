@@ -99,18 +99,19 @@ The derivative (D) correction is used as a damping term to suppress overshoots a
 
 # Results
 ## Long term analysis
-### Single Peak and Single Sampling Window Inspection 
-Every time we update our setup or code we perform an overnight stabilization trial with data obtained from the oscilloscope. Of course we choose not to directly communicate with the scope (2ns resolution leads to 5*10^8 data point per second and ~2*10^13 per trial more than 1000GB) but instead through a server that takes data every ~200 microsecond (about the same size as our sampling window). This appears to be a valid choice since no significant fluctuation at sub millisecond scale is expected; nonetheless every data set contains a consistent ~5% percentage error regardless of the time scale even after we fix the overshooting issue caused by arduino runtime and inconsitent pulse sampling. Consequently, we suspect the laser(major) and pulsing mechanism(major) and photodiode(minor) exhibit innate fluctuation at sub millisecond or down to microsecond level that we essentially cannot control. We should have characterized this at the very beginning of the experiment but we made false assumption that the laser and pulsing mechanism are ideal at sub millisecond scale. Below is a single pulse data sample taken directly by the scope with 2ns time resolutio and ~1mV and it exhibits ~5% percentage error.
+### Single Peak and Single Sampling Window Inspection
 <img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/peak fluctuation.png" width="1000">
-
-Then we collect data for one sampling window (~300 microsecond) again using the scope to maximize resolution. By plotting a histogram we can select threshold for being on-pulse (~0.04V). Then we apply this threshold cut to the raw data and calculate the percentage error for on-pulse data to be 4.3%. This value characterizes statistical fluctuation in our measurement. To isolate the fluctuation of laser itself, we also take sample data of raw laser power over one sampling window and calculate its percentage error to be 1.2%.
+Every time we update our setup or code we perform an overnight stabilization trial with data obtained from the oscilloscope. We choose not to directly communicate with the scope (2ns resolution leads to 5*10^8 data point per second and ~2*10^13 per trial more than 1000GB) but instead through a server that takes data every ~200 microsecond (about the same size as our sampling window). This appears to be a valid choice since no significant fluctuation at sub millisecond scale is expected; nonetheless every data set contains a consistent ~5% percentage error regardless of the time scale even after we fix the overshooting issue caused by arduino runtime and inconsitent pulse sampling. Consequently, we suspect the laser(major) and pulsing mechanism(major) and photodiode(minor) exhibit innate fluctuation at sub millisecond or down to microsecond level that we essentially cannot control. We should have characterized this at the very beginning of the experiment but we made false assumption that the laser and pulsing mechanism are ideal at sub millisecond scale. Below is a single pulse data sample taken directly by the scope with 2ns time resolutio and ~1mV and it exhibits ~5% percentage error.
 
 <img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/one sampling window.png" width="1000">
+Then we collect data for one sampling window (~300 us) again using the scope to maximize resolution. By plotting a histogram we can select threshold for being on-pulse (~0.04V). Then we apply this threshold cut to the raw data and calculate the percentage error for on-pulse data to be 4.3%. This value characterizes statistical fluctuation in our measurement. To isolate the fluctuation of laser itself, we also take sample data of raw laser power over one sampling window and calculate its percentage error to be 1.2%.
+
+
 
 
 ### Overnight Trial
 <img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/long_term_performance.png" width="1000">
-The histogram presented here illustrates the stabilized intensity signals of a pulsed laser over a 6-hour overnight trial.
+The histogram presented above illustrates the stabilized intensity signals of a pulsed laser over a 6-hour overnight trial.
 
 The relative error for this stabilized signal was 4.4%. While this value falls short of our goal of 1%, it aligns closely with the 4.3% error of the system's short-term fluctuation over 1 sampling window, which shows that our device is suppressing any detectable errors (longer than 1 sampling window).
 
