@@ -105,7 +105,7 @@ Every time we update our setup or code we perform an overnight stabilization tri
 
 <img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/one sampling window.png" width="1000">
 Then we collect data for one sampling window (~300 us) again using the scope to maximize resolution. By plotting a histogram we can select threshold for being on-pulse (~0.04V). Then we apply this threshold cut to the raw data and calculate the percentage error for on-pulse data to be 4.3%. This value characterizes statistical fluctuation in our measurement. To isolate the fluctuation of laser itself, we also take sample data of raw laser power over one sampling window and calculate its percentage error to be 1.2%. 
-<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/laser_short_term_fluctuation" width="1000">
+<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/short_term_laser_fluctuation" width="1000">
 It is worth noting that an overnight trial contains tens of thousands of data with both on and off pulse and intermediate value which makes the graph really messy and hard to analyze. Thus we plot it as a histogram, calculate the percentage error of high peak, and compare it with the percentage error of short-term pulse. Ideally these two should be consisten and we should be observing larger fluctuation in laser raw signal compared to its short term fluctuation error.
 
 ### Overnight Trial
