@@ -99,13 +99,13 @@ The derivative (D) correction is used as a damping term to suppress overshoots a
 
 # Results
 ### Peak Fluctuation
-<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/peak fluctuation.png" width="1000">
+<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/peak fluctuation.png" width="1000">
 When conducting tests on high frequency pulses, such as a 5us pulse width, we encounter a challenge in stabilizing each peak adequately. This difficulty arises due to the runtime of the Arduino functions and the relatively short pulse widths being tested. 
 As a result, we are only able to capture 0 to 2 data points per peak. The plot provided above showcases the fluctuation in laser intensity observed at a few peaks. Notably, we discovered that the peak value itself exhibited a significant fluctuation of approximately 12%. 
 This inconsistency highlights the limitations imposed by the testing conditions and emphasizes the need for improved methods to stabilize the peaks in such high frequency pulse experiments.
 
 ### One Sampling Window for Arduino
-<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/one sampling window.png" width="1000">
+<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/one sampling window.png" width="1000">
 This plot represents the results of our stabilization efforts for a single sampling window using an Arduino with a 5μs pulse width. In the plot, we observe two distinct peaks: one located at 0V and another centered around 0.53V. However, the intermediate values between these peaks are so sparsely sampled that they are barely discernible on the plot.
 
 Focusing on the distribution associated with the laser being on, specifically the peak around 0.53V, we can calculate the relative error as a measure of the laser's stability. To determine the relative error, we compute the standard deviation of all the measurements within our trial and divide it by the mean value. In this case, the relative error is found to be 4.3%.
@@ -114,7 +114,7 @@ It is important to note that this sampling window represents a scenario where we
 
 However, despite the challenges encountered, this characterization provides valuable insights into the long-term performance of our feedback loop. It highlights the areas where improvements are needed to enhance the stability and precision of our laser system..
 
-<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/raw one sampling window.png" width="1000">
+<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/raw one sampling window.png" width="1000">
 The analysis of the raw signal obtained directly from the laser, without passing through any of our electronic components or the acousto-optic modulator (AOM), reveals a relative error of 1.2% over the 100-pulse window. This finding suggests that enhancing our optical alignment and circuit design could potentially reduce the inherent error in our pulsed laser setup, which currently stands at 4.3%.
 
 It is important to note that the raw signal we obtained does not undergo any stabilization feedback loop. In contrast, the pulsed laser signal being evaluated for one sampling window lacks a significant stabilization feedback loop as well. By comparing the performance of these signals at this short time scale with their behavior at a much longer time scale, we can assess the efficacy of our stabilization mechanism.
@@ -122,7 +122,7 @@ It is important to note that the raw signal we obtained does not undergo any sta
 By conducting such comparisons, we can gain insights into the actual effectiveness of our stabilization process and understand the extent to which it mitigates the fluctuations and instability in the pulsed laser system. This analysis will allow us to evaluate the performance of our stabilization feedback loop and potentially identify areas for further improvement.
 
 ### Overnight Trial
-<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/long_term_performance.png" width="1000">
+<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/long_term_performance.png" width="1000">
 The histogram presented here illustrates the observed intensity signals of a pulsed laser over a 6-hour overnight trial, focusing on a 5μs pulse width. Throughout this experiment, our stabilization feedback loop operated continuously over this extended time scale, providing substantial adjustments to stabilize the laser intensity.
 
 Upon analyzing the data, we determined that the relative error for this particular experiment was measured at 4.4%. While this value falls short of our desired goal of achieving a 1% relative error for a 5μs pulse width, the relative error obtained aligns closely with the proclaimed inherent error of 4.3% discussed in the previous section!
@@ -131,7 +131,7 @@ This finding suggests that our stabilization feedback system performs well when 
 
 By acknowledging the nearly equivalent values of the relative error and the proclaimed inherent error, we can gain confidence in the effectiveness of our stabilization feedback system and recognize the importance of addressing noise-related factors to achieve greater precision in our experiments.
 
-<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/Screen Shot 2023-06-09 at 8.40.23 AM.png" width = "1000">
+<img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/Screen Shot 2023-06-09 at 8.40.23 AM.png" width = "1000">
 
 In contrast to the stabilization feedback loop's ability to maintain a consistent precision over time, we observe a drift in the precision of the raw signal's intensity. Specifically, the relative error of the raw signal increased from 1.2% to 3.2% over the duration of the experiment. This finding suggests that without the stabilization feedback loop, the precision of the raw signal deteriorates over time.
 
@@ -145,13 +145,13 @@ By addressing these factors—reducing noise through a PCB design and exploring 
 Our testing laser does not drift significantly over long time, therefore, to show the effect of our stabilization, we placed a variable filter in front of the laser which blocked a portion of light depending on how much it is rotated. Below are two situations which could happen in practice. <br />
 
 ### Adiabatic Fluctuation
-<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/Gradual.png" width="1000">
+<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/Gradual.png" width="1000">
 For this plot, we were changing the filter gradually. The raw signal is changing wildly in amplitude, however, the stabilized signal remains at the setpoint. This shows that the stabilization is taking place. This artificial fluctuation takes 18s to complete, which may seem to be slow, but the speed of this fluctuation is still very large compared to more realistic drifts, so we expect our device to handle slower, more realistic fluctuations just as well.<br />
 <br />
 At the right end, the stabilized signal is brought up by a larger fluctuation and the stabilization fails. This is because when the raw signal is higher than the setpoint, the Arduino tries to output a low voltage to increase the attenuation of the VVA, so the AOM gets less power and less optical power will be delivered; however, the Arduino output has got to the minimum and it cannot lower the intensity any more. So the stabilized signal is now swinging with the fluctuation. This is what happens when the error is out of the dynamic range. <br />
 
 ### Long Deadtime 
-<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/Deadtime.png" width="1000">
+<img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/Deadtime.png" width="1000">
 This is simulating when people stop running experiments and only come back sometimes later. When no experiment is running, the laser is blocked but is still on and drifting, yet the Arduino receives no information regarding how the laser intensity is changing Then, when people restart the experiment, we expect our device to bring back the free-running laser despite this lack of information. As we see here, the stabilization is able to function even after a period of long deadtime. How long it takes to bring back the optical power depends on the settings of PID coefficients. With our default setting, we typically saw stabilization within 10ms.<br />
 <br />
 
