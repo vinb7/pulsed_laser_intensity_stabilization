@@ -23,7 +23,7 @@ When the laser intensity varies, the excitation and de-excitation rates in the t
 Another example is laser cooling, where we often want a specifict laser intensity to achieve the best cooling effect or to avoid heating up an trapped ion. Therefore, we expect the laser intensity to be what we set in a control computer. However, in practice, many factors could affect laser intensity: thermal fluctuation, mechanical vibration, etc.
 
 # Goal
-Our goal for this project is to build a reliable laser intensity stabilizing device, exploiting PID feedback control, to stabilize a **Bold pulsed** laser. We aim to suppress power flunctuation down to 1% for a pulse width of 5 us.
+Our goal for this project is to build a reliable laser intensity stabilizing device, exploiting PID feedback control, to stabilize a **PULSED** laser. We aim to suppress power flunctuation down to 1% for a pulse width of 5 us.
 
 # List of Components
 - Laser: [PL202 Thorlab Compact Laser](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=12994) 
