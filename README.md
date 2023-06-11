@@ -24,7 +24,7 @@ When the laser intensity varies, the excitation and de-excitation rates in the t
 Another example is laser cooling, where we often want a specifict laser intensity to achieve the best cooling effect or to avoid heating up an trapped ion. Therefore, we expect the laser intensity to be what we set in a control computer. However, in practice, many factors could affect laser intensity: thermal fluctuation, mechanical vibration, etc.
 
 # Goal
-Our goal for this project is to build a reliable laser intensity stabilizing device, exploiting PID feedback control, to stabilize a **PULSED** laser. We aim to suppress power flunctuation down to 1% for a pulse width of 5 us.
+Our goal for this project is to build a reliable laser intensity stabilizing device, exploiting PID feedback control, to stabilize a **PULSED** laser. We aim to suppress power flunctuation down to 1% for a pulse width of 5 μs.
 
 # List of Components
 - Laser: [PL202 Thorlab Compact Laser](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=12994) 
@@ -57,14 +57,14 @@ It is also worth noting that if the VVA tune goes beyond this saturation voltage
 <img src="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/arduino/Arduino_DUE.png" width="1000">
 Arduino DUE is a common, accessible microcontroller that allows us to read input voltage, output voltage, and calculate corrections using a PID algorithm. Voltage generated from the photodiode taking the stabilized signal is fed into one of its Analog-to-Digital Converter (ADC) pin, and after calculating the PID error signal, a correction voltage is outputted from one of its Digital-to-Analog Converter (DAC) pin to vary the power received by the AOM. <br />
 <br />
-Arduino DUE is the fastest among the Arduino family, in terms of sampling rate and processing speed. However, it turned out that for our purpose of stabilzing a 5us pulse, the speed of the Arduino DUE is still insufficient. Below is a summary of the time taken by different Arduino commands: <br />
+Arduino DUE is the fastest among the Arduino family, in terms of sampling rate and processing speed. However, it turned out that for our purpose of stabilzing a 5μs pulse, the speed of the Arduino DUE is still insufficient. Below is a summary of the time taken by different Arduino commands: <br />
 <br />
-digitalRead(): 1.2us <br />
-read_adc(): 1.8us <br />
-micros(): 1.3us <br />
-analogWrite(): 3.8us <br />
+digitalRead(): 1.2μs <br />
+read_adc(): 1.8μs <br />
+micros(): 1.3μs <br />
+analogWrite(): 3.8μs <br />
 Serial.println(“ “): 1.3ms <br />
-loop(): 25us [nothing is in the loop()] <br />
+loop(): 25μs [nothing is in the loop()] <br />
 <br />
 
 read_adc() and analogWrite() take time on the order of the pulse length. So when the pulse length approaches these commands' runtimes, it happens frequently that a read_adc() which we expect to be executed when the pulse is high, actually returns a value (typically 0) when the pulse is low. This greatly compromises our stability because a reading of 0 misleads the Arduino to think that the intensity of the laser has dropped significantly so it needs to increase the power giving to the AOM. The result is a sudden jump on the laser intensity. This has been observed and is mitigated by our Peak Averaging algorithm. <br />
@@ -107,7 +107,7 @@ The derivative (D) correction is used as a damping term to suppress overshoots a
 Every time we update our setup we perform an overnight stabilization trial with data obtained from the oscilloscope. We choose not to directly communicate with the scope (which takes data eevery 2ns and leads to as many as 5*10^8 data point per second) but instead through a server that takes data every 200μs (about the same size as our sampling window). This appears to be a valid choice since no significant fluctuation at sub millisecond scale is expected; nonetheless every data set contains a consistent ~5% percentage error regardless of the time scale even after we fix the overshooting issue caused by arduino runtime and inconsitent pulse sampling. Consequently, we suspect the laser, the pulse, and the photodiode exhibit innate fluctuation at sub millisecond or down to microsecond level that we essentially cannot control. We should have characterized this at the very beginning of the experiment but we made false assumption that the laser and pulsing mechanism are ideal at sub millisecond scale. Above is a two pulse data sample taken directly from the scope with 2ns time resolution that exhibit ~5% percentage error.
 
 <img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/300 us stabilized.png" width="1000">
-Then we collect data for one sampling window (~300 us) again using the scope to maximize resolution. By plotting a histogram we can select threshold for being on-pulse (~0.04V). Then we apply this threshold cut to the raw data and calculate the percentage error for on-pulse data to be 4.3%. Inside one sampling window there is no stabilization event happening, so this percentage error characterizes the statistical fluctuation in our measurement, for the stabilized signal. For data we present here and below, we use percentage error as a measure for how stabilized the intensity is: the higher the percentage error, the more spread out the intensity is, the worse the stabilizability.
+Then we collect data for one sampling window (~300 μs) again using the scope to maximize resolution. By plotting a histogram we can select threshold for being on-pulse (~0.04V). Then we apply this threshold cut to the raw data and calculate the percentage error for on-pulse data to be 4.3%. Inside one sampling window there is no stabilization event happening, so this percentage error characterizes the statistical fluctuation in our measurement, for the stabilized signal. For data we present here and below, we use percentage error as a measure for how stabilized the intensity is: the higher the percentage error, the more spread out the intensity is, the worse the stabilizability.
 
 
 <img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/300 us raw.png" width="1000">
@@ -119,7 +119,7 @@ It is worth noting that an overnight trial contains tens of thousands of data wi
 
 <img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/6 hour raw.png" width = "1000">
 
-We observe a drift in the raw signal's intensity for this 6-hour trial: the percentage error of the raw signal is 3.2%, 3 times the percentage error for a 300us trial, which suggests a drift in the laser intensity in the long run. If there is no stabilization happening, we would expect the stabilized signal to have a 3 times larger percentage error as well, compared to the percentage error within one sampling window (4.3%). 
+We observe a drift in the raw signal's intensity for this 6-hour trial: the percentage error of the raw signal is 3.2%, 3 times the percentage error for a 300μs trial, which suggests a drift in the laser intensity in the long run. If there is no stabilization happening, we would expect the stabilized signal to have a 3 times larger percentage error as well, compared to the percentage error within one sampling window (4.3%). 
 
 <img src ="https://github.com/vinb7/pulsed_laser_intensity_stabilization/blob/main/results/6 hour stabilized.png" width = "1000">
 
